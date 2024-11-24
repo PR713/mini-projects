@@ -1,1 +1,1 @@
-# Game
+Strzelanka zombie

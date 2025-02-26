@@ -1,10 +1,6 @@
 package org.example;
 
 
-import javax.swing.*;
-import javax.xml.transform.Source;
-import java.sql.SQLOutput;
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Tic Tac Toe!");
@@ -18,6 +14,7 @@ public class Main {
         } while (playerSign != 'X' && playerSign != 'O');
 
         Game game = new Game(playerSign);
+        game.startGame();
 
     }
 }

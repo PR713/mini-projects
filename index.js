@@ -30,6 +30,14 @@ function deleteLead(){
     renderLeads();
 }
 
+
+function deleteThatLead(index){
+    myLeads.splice(index, 1);
+    localStorage.setItem('myLeads', JSON.stringify(myLeads));
+    renderLeads();
+}
+
+
 function saveTab(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         let currTabLink = tabs[0].url;
@@ -67,13 +75,20 @@ function renderLeads(){
                 <a target='_blank' href='${myLeads[i]}'>
                     ${myLeads[i]}
                 </a>
+                <button class="mini-delete-btns" data-index="${i}">X</button>
             </li>
         `
     }
     ulEl.innerHTML = listItems;
+
+    document.querySelectorAll('.mini-delete-btns')
+        .forEach((button) => {
+            button.addEventListener('click', () => deleteThatLead(button.dataset.index))
+        })
 }
 
+
 inputBtn.addEventListener('click', saveLead)
-deleteBtn.addEventListener('click', deleteLead)
+deleteBtn.addEventListener('dblclick', deleteLead)
 tabBtn.addEventListener('click', saveTab)
 

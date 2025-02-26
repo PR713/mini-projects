@@ -3,7 +3,23 @@ body {
     margin: 0;
     padding: 10px;
     font-family: Arial, sans-serif;
-    min-width: 400px;
+    min-width: 500px;
+}
+
+
+#container {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
 }
 
 
@@ -11,7 +27,10 @@ input {
     width: 100%;
     padding: 10px 10px;
     box-sizing: border-box;
-    border: 1px solid #5f9341;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: none;
 }
 
 
@@ -22,11 +41,44 @@ button {
     font-weight: bold;
     cursor: pointer;
     border: 1px solid #5f9341;
+    border-radius: 5px;
 }
+
+
+button:hover {
+    background-color: #4e8230;
+    border: 1px solid #4e8230;
+}
+
 
 #delete-btn {
     background-color: white;
     color: #5f9341;
+}
+
+
+#delete-btn:hover {
+    background-color: #eeeded;
+    border: 1px solid #4a7d31;
+}
+
+
+.mini-delete-btns {
+    margin-left: 10px;
+    padding: 5px 8px;
+    font-size: 10px;
+    text-align: center;
+    background-color: #ff1818;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.mini-delete-btns:hover {
+    background-color: #dd0606;
+    border: none;
 }
 
 
@@ -38,10 +90,19 @@ ul {
 
 
 li {
-    margin-top: 5px;
+    margin-top: 15px;
+    display: flex;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
 
 
 a {
     color: #5f9341;
+    text-decoration: none;
+    font-size: 14px;
+    flex-grow: 1;
+    margin-right: 10px;
+    transition: color 0.3s ease;
 }

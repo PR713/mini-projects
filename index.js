@@ -9,8 +9,13 @@ renderLeads();
 
 
 function saveLead(){
-    if (inputEl.value !== ''){
-        myLeads.push(inputEl.value);
+    let inputVal = inputEl.value.trim();
+    if (inputVal !== ''){
+        if (!inputVal.startsWith('http') && !inputVal.startsWith('https')){
+            inputVal = 'https://' + inputVal;
+        }
+
+        myLeads.push(inputVal);
         inputEl.value = '';
         localStorage.setItem('myLeads', JSON.stringify(myLeads));
         //local storage can only store strings
@@ -27,7 +32,11 @@ function deleteLead(){
 
 function saveTab(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        myLeads.push(tabs[0].url);
+        let currTabLink = tabs[0].url;
+        if (!currTabLink.startsWith('http') && !currTabLink.startsWith('https')){
+            currTabLink = 'https://' + currTabLink;
+        }
+        myLeads.push(currTabLink);
         localStorage.setItem('myLeads', JSON.stringify(myLeads));
         renderLeads();
     });

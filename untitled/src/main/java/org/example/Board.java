@@ -66,6 +66,10 @@ public class Board {
         return emptyCells;
     }
 
+    public char[][] getBoard(){
+        return board;
+    }
+
 
     public char getCell(int row, int column){
         return board[row][column];

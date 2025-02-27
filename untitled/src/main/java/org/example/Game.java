@@ -1,11 +1,10 @@
 package org.example;
 
-import javafx.application.Platform;
 import org.example.presenter.GamePresenter;
 
 public class Game {
 
-    private final Board GameBoard;
+    private final Board gameBoard;
     private char winner = ' ';
     private final char playerSign;
     private final char computerSign;
@@ -13,8 +12,8 @@ public class Game {
     private char[][] board;
 
     public Game(char playerSign, GamePresenter presenter) {
-        this.GameBoard = new Board();
-        this.board = GameBoard.getBoard();
+        this.gameBoard = new Board();
+        this.board = gameBoard.getBoard();
         this.playerSign = playerSign;
         this.presenter = presenter;
         if (playerSign == 'X') {
@@ -25,71 +24,42 @@ public class Game {
     }
 
 
-    public void startGame() {
-//        board.resetBoard();
+    public void play(int row, int col) {
 
-        while (winner == ' ' && GameBoard.checkFreeSpaces() > 0) {
-            Platform.runLater(() -> presenter.drawBoard(board));
+        playerMove(row, col);
+        winner = gameBoard.checkWinner();
 
-            playerMove();
-            winner = GameBoard.checkWinner();
-
-            if (winner != ' ' || GameBoard.checkFreeSpaces() == 0) {
-                break;
-            }
-
-            computerMove();
-            winner = GameBoard.checkWinner(); //even move, so there will be always one more space
-            //so we don't need to check as above if(...) statement
+        if (winner != ' ' && gameBoard.checkFreeSpaces() > 0){
+            presenter.endGame(winner);
         }
 
-        Platform.runLater(() -> presenter.drawBoard(board));
-        printWinner();
+        computerMove();
+
+        winner = gameBoard.checkWinner();
+
+        
+
+        presenter.drawBoard(board);
     }
 
 
-    public void playerMove() {
-        int row;
-        int column;
-
-        do {
-            System.out.println("Enter row (1-3): ");
-            row = Integer.parseInt(System.console().readLine());
-            row--;
-            System.out.println("Enter column (1-3): ");
-            column = Integer.parseInt(System.console().readLine());
-            column--;
-            if (row < 0 || row > 2 || column < 0 || column > 2) {
-                System.out.println("Invalid input. Try again.");
-                continue;
-            }
-
-            if (GameBoard.getCell(row, column) != ' ') {
-                System.out.println("This space is already taken");
-            } else {
-                GameBoard.setCell(row, column, playerSign);
-                break;
-            }
-        } while (true);
+    public void playerMove(int row, int col) {
+        if (gameBoard.getCell(row, col) == ' ') {
+            gameBoard.setCell(row, col, playerSign);
+        }
     }
 
 
     public void computerMove(){
-        int[] emptyCells = GameBoard.getEmptyCells();
+        int[] emptyCells = gameBoard.getEmptyCells();
         int randomIndex = (int) (Math.random() * emptyCells.length); //like Math.floor
         int cell = emptyCells[randomIndex];
-        GameBoard.setCell(cell / 3, cell % 3, computerSign);
+        gameBoard.setCell(cell / 3, cell % 3, computerSign);
     }
 
 
-    public void printWinner(){
-        if (winner == playerSign){
-            System.out.println("Congratulations! You won!");
-        } else if (winner == computerSign){
-            System.out.println("Computer won!");
-        } else {
-            System.out.println("It's a draw!");
-        }
+    public char[][] getBoard() {
+        return board;
     }
 }
 

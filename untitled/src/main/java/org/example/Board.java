@@ -4,6 +4,7 @@ package org.example;
 public class Board {
 
     private final char[][] board = new char[3][3];
+    private final int[] winningCombination = new int[3];
 
     public Board(){
         resetBoard();
@@ -14,6 +15,10 @@ public class Board {
             for (int j = 0; j < 3; j++){
                 board[i][j] = ' ';
             }
+        }
+
+        for (int i = 0; i < 3; i++){
+            winningCombination[i] = -1;
         }
     }
 
@@ -32,19 +37,31 @@ public class Board {
 
     public char checkWinner(){
         for (int i = 0; i < 3; i++){
-            if (board[i][0] == board[i][1] && board[i][1] == board[i][2]){
+            if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' '){
+                winningCombination[0] = 3 * i;
+                winningCombination[1] = 3 * i + 1;
+                winningCombination[2] = 3 * i + 2;
                 return board[i][0];
             }
         }
         for (int i = 0; i < 3; i++){
-            if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
+            if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' '){
+                winningCombination[0] = i;
+                winningCombination[1] = i + 3;
+                winningCombination[2] = i + 6;
                 return board[0][i];
             }
         }
-        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' '){
+            winningCombination[0] = 0;
+            winningCombination[1] = 4;
+            winningCombination[2] = 8;
             return board[0][0];
         }
-        if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
+        if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' '){
+            winningCombination[0] = 2;
+            winningCombination[1] = 4;
+            winningCombination[2] = 6;
             return board[0][2];
         } else {
             return ' ';
@@ -70,6 +87,9 @@ public class Board {
         return board;
     }
 
+    public int[] getWinningCombination(){
+        return winningCombination;
+    }
 
     public char getCell(int row, int column){
         return board[row][column];

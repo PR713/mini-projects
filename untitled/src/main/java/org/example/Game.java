@@ -29,7 +29,7 @@ public class Game {
         playerMove(row, col);
         winner = gameBoard.checkWinner();
 
-        if (winner != ' ' && gameBoard.checkFreeSpaces() > 0){
+        if (winner != ' ' || gameBoard.checkFreeSpaces() == 0){
             presenter.endGame(winner);
             return;
         }
@@ -38,7 +38,7 @@ public class Game {
         computerMove();
         winner = gameBoard.checkWinner();
 
-        if (winner != ' ' && gameBoard.checkFreeSpaces() > 0){
+        if (winner != ' ' || gameBoard.checkFreeSpaces() == 0){
             presenter.endGame(winner);
             return;
         }
@@ -64,6 +64,14 @@ public class Game {
 
     public char[][] getBoard() {
         return board;
+    }
+
+    public Board getGameBoard() {
+        return gameBoard;
+    }
+
+    public char getComputerSign() {
+        return computerSign;
     }
 }
 

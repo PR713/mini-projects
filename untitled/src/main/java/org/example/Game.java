@@ -60,6 +60,8 @@ public class Game {
         int cell = emptyCells[randomIndex];
         gameBoard.setCell(cell / 3, cell % 3, computerSign);
     }
+    //TODO if computer can win, it should win
+    //TODO if player can win, computer should block player thats it
 
 
     public char[][] getBoard() {

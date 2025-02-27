@@ -8,8 +8,7 @@ public class Game {
     private final char computerSign;
 
     public Game(char playerSign) {
-        Board board = new Board();
-        this.board = board;
+        this.board = new Board();
         this.playerSign = playerSign;
         if (playerSign == 'X') {
             computerSign = 'O';

@@ -31,13 +31,17 @@ public class Game {
 
         if (winner != ' ' && gameBoard.checkFreeSpaces() > 0){
             presenter.endGame(winner);
+            return;
         }
 
-        computerMove();
 
+        computerMove();
         winner = gameBoard.checkWinner();
 
-        
+        if (winner != ' ' && gameBoard.checkFreeSpaces() > 0){
+            presenter.endGame(winner);
+            return;
+        }
 
         presenter.drawBoard(board);
     }

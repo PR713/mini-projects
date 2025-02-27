@@ -13,6 +13,7 @@ public class GamePresenter {
 
     private char playerSign;
     private Game game;
+    private boolean isStillPlaying = false;
 
     @FXML
     private GridPane gridPane;
@@ -30,6 +31,7 @@ public class GamePresenter {
             System.out.println("Game started");//..
             Game game = new Game(playerSign, this);
             this.game = game;
+            isStillPlaying = true;
             drawBoard(game.getBoard());
         }
     }
@@ -43,7 +45,7 @@ public class GamePresenter {
                 Button button = new Button(String.valueOf(board[row][col]));
                 button.setMinSize(100, 100);
 
-                if (board[row][col] == ' ') {
+                if (board[row][col] == ' ' && isStillPlaying) {
                     int finalRow = row;
                     int finalCol = col;
                     button.setOnAction(event -> handlePlayerMove(finalRow, finalCol));
@@ -63,6 +65,8 @@ public class GamePresenter {
 
 
     public void endGame(char winner) {
+        isStillPlaying = false;
+        drawBoard(game.getBoard());
         if (winner == playerSign){
             System.out.println("You won!");
         } else {

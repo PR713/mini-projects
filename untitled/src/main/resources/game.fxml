@@ -2,9 +2,24 @@
 
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            minHeight="550.0" minWidth="850.0"
+            minHeight="500.0" minWidth="650.0"
             fx:controller="org.example.presenter.GamePresenter" prefWidth="600.0">
+<!--            set the controller to the presenter class-->
+        <top>
+            <VBox alignment="CENTER" spacing="10">
+                <TextField fx:id="inputField" promptText="Enter your symbol: 'O' or 'X'... " />
+            </VBox>
+        </top>
 
+        <center>
+            <VBox spacing="10" alignment="CENTER">
+                <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true" visible="false" />
+                <Button fx:id="start" text="Start" onAction="#onGameStartClicked" />
+
+            </VBox>
+        </center>
 </BorderPane>

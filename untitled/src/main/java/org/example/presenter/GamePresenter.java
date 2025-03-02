@@ -61,7 +61,7 @@ public class GamePresenter {
                     if (winningCombination[0] != -1) {
                         for (int i = 0; i < 3; i++) {
                             if (winningCombination[i] == row * 3 + col) {
-                                System.out.println(winningCombination[i]);
+                                //System.out.println(winningCombination[i]);
                                 button.setStyle(button.getStyle() + "; -fx-background-color: yellow");
                             }
                         }

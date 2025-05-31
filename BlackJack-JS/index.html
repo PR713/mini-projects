@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <title>BlackJack</title>
+</head>
+<body>
+    <h1>BlackJack</h1>
+    <p id="message-el">Want to play a round?</p>
+    <div id="cards">
+        <div>
+            <p class = "hand">Your hand</p>
+            <p id="cards-el"></p>
+            <p id="sum-el">Value: </p>
+        </div>
+        <div>
+            <p class = "hand">Dealer hand</p>
+            <p id="cards-el-dealer"></p>
+            <p id="sum-el-dealer">Value: </p>
+        </div>
+    </div>
+
+    <div id="buttons">
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+        <button id="new-card-btn" onclick="newCard()" disabled>Hit</button>
+        <button id="stand-btn" onclick="stand()" disabled>Stand</button>
+        <p id="player-el"></p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

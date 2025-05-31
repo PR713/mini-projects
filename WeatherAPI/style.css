@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#app {
+    position: relative;
+    width: 414px;
+    height: 420px;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 40px 0;
+    overflow: hidden;
+    border-radius: 45px;
+    background-image: linear-gradient(
+    325deg,
+    hsl(240deg 97% 60%) 0%,
+    hsl(240deg 97% 65%) 32%,
+    hsl(240deg 97% 70%) 59%,
+    hsl(240deg 96% 75%) 74%,
+    hsl(240deg 96% 79%) 84%,
+    hsl(240deg 97% 82%) 90%,
+    hsl(240deg 97% 84%) 92%,
+    hsl(240deg 98% 88%) 95%
+    );
+}
+
+#searchImg {
+    max-height: 15px;
+    max-width: 20px;
+    object-fit: cover;
+    border: none;
+}
+
+#searchBar {
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
+    margin-bottom: 30px;
+}
+
+#searchInput {
+    font-size: 1.1rem;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    width: 90%;
+    border-bottom: solid 1px #bdd7d9;
+    padding: 0 10px;
+}
+
+#searchInput::placeholder {
+    color: #fff;
+    opacity: 0.6;
+}
+
+#extraInfo {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    padding-bottom: 30px;
+}
+
+#extraInfo h5 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+#date {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+
+#info {
+    line-height: 0.5rem;
+    color: #fff;
+}
+
+#info h3{
+    font-size: 40px;
+    font-weight: bold;
+    margin: 1em;
+}
+
+#description {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+#temp {
+    color: #fff;
+    font-size: 30px;
+    margin-top: 20px;
+}
